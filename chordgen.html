@@ -85,12 +85,19 @@
       const length = parseInt(document.getElementById('length').value);
       const availableChords = chords[key][scale];
 
+      console.log("Key:", key);
+      console.log("Scale:", scale);
+      console.log("Length:", length);
+      console.log("Available Chords:", availableChords);
+
       // Generate a progression of the specified length
       const progression = [];
       for (let i = 0; i < length; i++) {
         const randomIndex = Math.floor(Math.random() * availableChords.length);
         progression.push(availableChords[randomIndex]);
       }
+
+      console.log("Generated Progression:", progression);
 
       // Display the progression
       document.getElementById('output').textContent = progression.join(' - ');
