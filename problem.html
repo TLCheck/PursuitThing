@@ -7,7 +7,7 @@
     <style>
         /* CSS Styles */
         body {
-            font-family: 'Arial', sans-serif; /* Updated to sans-serif font */
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -35,23 +35,23 @@
         }
 
         .slide {
-            opacity: 0; /* Start with 0 opacity for fade animation */
-            visibility: hidden; /* Hide the slide initially */
-            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth fade transition */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
             background: #fff;
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
-            position: absolute; /* Position slides absolutely to stack them */
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
         }
 
         .slide.active {
-            opacity: 1; /* Fade in to full opacity */
-            visibility: visible; /* Make the slide visible */
+            opacity: 1;
+            visibility: visible;
         }
 
         .slide h2 {
@@ -78,22 +78,37 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Navigation Arrows */
         .navigation {
-            text-align: center;
-            margin-top: 1rem;
-            position: relative; /* Ensure buttons stay below slides */
-            z-index: 1; /* Bring buttons above slides */
+            position: fixed;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none; /* Allow clicks to pass through to buttons */
         }
 
         .navigation button {
             background: #333;
             color: #fff;
             border: none;
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
-            border-radius: 4px;
+            padding: 1rem;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto; /* Enable clicks on buttons */
+            transition: background 0.3s ease;
+        }
+
+        .navigation button:hover {
+            background: #555;
         }
 
         .navigation button:disabled {
@@ -159,13 +174,14 @@
                 <li>Be intuitive and accessible for musicians of all skill levels, requiring minimal music theory knowledge to use effectively.</li>
             </ul>
         </section>
-
-        <!-- Navigation Buttons -->
-        <div class="navigation">
-            <button id="prevBtn" disabled>Previous</button>
-            <button id="nextBtn">Next</button>
-        </div>
     </main>
+
+    <!-- Navigation Arrows -->
+    <div class="navigation">
+        <button id="prevBtn" disabled>&larr;</button> <!-- Left Arrow -->
+        <button id="nextBtn">&rarr;</button> <!-- Right Arrow -->
+    </div>
+
     <footer>
         <p>&copy; 2025 Pete Molski</p>
     </footer>
