@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Progression Generator Problem Statement</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .slide p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .slide ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .slide ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .navigation button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .navigation button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chord Progression Generator Problem Statement</h1>
+    </header>
+    <main>
+        <!-- Slide 1: Summary -->
+        <section class="slide active">
+            <h2>1. Summary</h2>
+            <p>The issue is that many musicians, especially beginners and those without formal music theory training, struggle to create or experiment with chord progressions when writing music. An automated tool that generates chord progressions based on a selected key and scale (major or minor) would help streamline the creative process.</p>
+        </section>
+
+        <!-- Slide 2: Context -->
+        <section class="slide">
+            <h2>2. Context</h2>
+            <p>Chord progressions are the foundation of most music, but creating them requires knowledge of music theory, creativity, and experimentation. Many songwriters and musicians, particularly those who are self-taught, find it challenging to come up with progressions that sound good or fit their desired mood. Historically, musicians have relied on trial and error, theory books, or online resources, but these methods can be time-consuming and overwhelming. A tool that simplifies this process would fill a significant gap in music creation tools.</p>
+        </section>
+
+        <!-- Slide 3: Impact -->
+        <section class="slide">
+            <h2>3. Impact</h2>
+            <p>This problem affects songwriters, composers, and musicians of all skill levels, but particularly beginners and those without formal music education. It slows down the creative process, limits experimentation, and can lead to frustration or creative blocks. For hobbyists, it may discourage them from continuing to write music, while for professionals, it can waste valuable time that could be spent refining their work.</p>
+        </section>
+
+        <!-- Slide 4: Root Causes -->
+        <section class="slide">
+            <h2>4. Root Causes</h2>
+            <p>The problem exists because:</p>
+            <ul>
+                <li>Music theory can be complex and intimidating for beginners.</li>
+                <li>Not all musicians have the time or resources to learn advanced harmonic concepts.</li>
+                <li>Existing tools or resources (e.g., theory books, online tutorials) often require manual effort and lack interactivity.</li>
+                <li>There is a lack of accessible, user-friendly tools that generate chord progressions tailored to a musician’s specific needs (e.g., key, scale, mood).</li>
+            </ul>
+        </section>
+
+        <!-- Slide 5: Outcome -->
+        <section class="slide">
+            <h2>5. Outcome</h2>
+            <p>A solution should be able to:</p>
+            <ul>
+                <li>Allow users to input a key (e.g., C major, A minor) and scale type (major or minor).</li>
+                <li>Generate a variety of chord progressions that are musically coherent and stylistically diverse.</li>
+                <li>Provide options for customization, such as progression length, complexity, or emotional tone (e.g., happy, sad, tense).</li>
+                <li>Offer playback or visualization of the progressions to help users hear and understand the results.</li>
+                <li>Be intuitive and accessible for musicians of all skill levels, requiring minimal music theory knowledge to use effectively.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation">
+            <button id="prevBtn" disabled>Previous</button>
+            <button id="nextBtn">Next</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Pete Molski</p>
+    </footer>
+
+    <script>
+        // JavaScript for click-through functionality
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === slides.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Initialize the first slide
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
