@@ -35,19 +35,23 @@
         }
 
         .slide {
-            display: none; /* Hide all slides by default */
+            opacity: 0; /* Start with 0 opacity for fade animation */
+            visibility: hidden; /* Hide the slide initially */
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth fade transition */
             background: #fff;
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
-            opacity: 0; /* Start with 0 opacity for fade animation */
-            transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
+            position: absolute; /* Position slides absolutely to stack them */
+            top: 0;
+            left: 0;
+            right: 0;
         }
 
         .slide.active {
-            display: block; /* Show active slide */
             opacity: 1; /* Fade in to full opacity */
+            visibility: visible; /* Make the slide visible */
         }
 
         .slide h2 {
@@ -77,6 +81,8 @@
         .navigation {
             text-align: center;
             margin-top: 1rem;
+            position: relative; /* Ensure buttons stay below slides */
+            z-index: 1; /* Bring buttons above slides */
         }
 
         .navigation button {
