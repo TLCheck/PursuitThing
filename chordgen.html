@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chord Progression Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    select, button {
+      padding: 5px;
+      font-size: 16px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chord Progression Generator</h1>
+  <label for="key">Key:</label>
+  <select id="key">
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <!-- Add more keys -->
+  </select>
+  <label for="scale">Scale:</label>
+  <select id="scale">
+    <option value="major">Major</option>
+    <option value="minor">Minor</option>
+  </select>
+  <label for="length">Progression Length:</label>
+  <select id="length">
+    <option value="2">2 Chords</option>
+    <option value="3">3 Chords</option>
+    <option value="4">4 Chords</option>
+    <option value="5">5 Chords</option>
+  </select>
+  <button onclick="generateProgression()">Generate</button>
+  <p id="output"></p>
+
+  <script>
+    const chords = {
+      C: { major: ['C', 'Dm', 'Em', 'F', 'G', 'Am', 'Bdim'], minor: ['Am', 'Bdim', 'C', 'Dm', 'Em', 'F', 'G'] },
+      D: { major: ['D', 'Em', 'F#m', 'G', 'A', 'Bm', 'C#dim'], minor: ['Bm', 'C#dim', 'D', 'Em', 'F#m', 'G', 'A'] },
+      E: { major: ['E', 'F#m', 'G#m', 'A', 'B', 'C#m', 'D#dim'], minor: ['Em', 'F#dim', 'G', 'Am', 'Bm', 'C', 'D'] },
+      // Add more keys
+    };
+
+    function generateProgression() {
+      const key = document.getElementById('key').value;
+      const scale = document.getElementById('scale').value;
+      const length = parseInt(document.getElementById('length').value);
+      const availableChords = chords[key][scale];
+
+      // Generate a progression of the specified length
+      const progression = [];
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * availableChords.length);
+        progression.push(availableChords[randomIndex]);
+      }
+
+      // Display the progression
+      document.getElementById('output').textContent = progression.join(' - ');
+    }
+  </script>
+</body>
+</html>
