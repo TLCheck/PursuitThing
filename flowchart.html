@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Management Workflow Diagram</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .workflow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .step {
+      background-color: #ffffff;
+      border: 2px solid #007bff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .step::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background-color: #007bff;
+    }
+
+    .step:last-child::after {
+      display: none;
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #007bff;
+    }
+
+    .feedback-loop {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .feedback-loop .step {
+      background-color: #ffdd57;
+      border-color: #ffcc00;
+    }
+
+    .feedback-loop .step::after {
+      background-color: #ffcc00;
+    }
+
+    .feedback-loop .arrow {
+      border-top-color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+  <div class="workflow">
+    <!-- Data Collection -->
+    <div class="step">
+      <h3>Data Collection</h3>
+      <p>User Input, Time Tracking, Calendar, Wearables</p>
+      <div class="arrow"></div>
+    </div>
+
+    <!-- Data Processing -->
+    <div class="step">
+      <h3>Data Processing</h3>
+      <p>Cleaning, Categorization, Structuring</p>
+      <div class="arrow"></div>
+    </div>
+
+    <!-- AI Analysis -->
+    <div class="step">
+      <h3>AI Analysis</h3>
+      <p>Pattern Recognition, Predictive Analysis, Insights</p>
+      <div class="arrow"></div>
+    </div>
+
+    <!-- Personalized Output -->
+    <div class="step">
+      <h3>Personalized Output</h3>
+      <p>Visualizations, Recommendations, Alerts</p>
+    </div>
+
+    <!-- Feedback Loop -->
+    <div class="feedback-loop">
+      <div class="step">
+        <h3>Feedback Loop</h3>
+        <p>User Feedback, Adjust AI Models</p>
+        <div class="arrow"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
